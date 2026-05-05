@@ -1,0 +1,29 @@
+@model List<BookSwapApp.Models.Book>
+
+@{
+    ViewData["Title"] = "Books";
+}
+
+<h2>Books List</h2>
+
+<p>Here you will see all books.</p>
+<form method="get" action="/Books/Index">
+    <input type="text" name="searchText" placeholder="Kitap ara..." />
+    <button type="submit">Ara</button>
+</form>
+
+<a class="btn btn-primary" href="/Books/Create">Add New Book</a>
+
+<br><br>
+
+<h3>Added Books</h3>
+
+<ul>
+@foreach (BookSwapApp.Models.Book book in Model)
+{
+    <li>
+    @book.Name - @book.Author
+    <a href="/Books/Delete/@book.Id" style="color:red; margin-left:10px;">Sil</a>
+</li>
+}
+</ul>
